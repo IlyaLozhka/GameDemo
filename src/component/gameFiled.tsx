@@ -9,21 +9,21 @@ export const GameFiled: React.FunctionComponent<IProps> = ({
                                                                removeLivePointSecondPlayer
                                                            }) => {
     const onClickHitSecondPlayer = (value: number) => () => {
-        removeLivePointSecondPlayer(value)
+        removeLivePointSecondPlayer(value);
     }
     const onClickHitFirstPlayer = (value: number) => () => {
-        removeLivePointFirstPlayer(value)
+        removeLivePointFirstPlayer(value);
     }
 
     return (<div className={styles.field}>
         <div className={styles.secondPlayer}>
-            Lives: {livesPlayerTwo}
-            <button onClick={ onClickHitSecondPlayer(livesPlayerTwo - 1)}>
+            <span>Lives: {livesPlayerTwo}</span>
+            <button onClick={onClickHitSecondPlayer(livesPlayerTwo - 1)}>
                 HIT
             </button>
         </div>
         <div className={styles.firstPlayer}>
-            Lives: {livesPlayerOne}
+            <span> Lives: {livesPlayerOne}</span>
             <button onClick={onClickHitFirstPlayer(livesPlayerOne - 1)}>
                 HIT
             </button>

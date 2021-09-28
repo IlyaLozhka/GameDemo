@@ -13,7 +13,7 @@ export interface IPlayerReducer {
 }
 
 export interface IStore {
-    readonly playersReducer: IPlayerReducer
+    readonly playersReducer: IPlayerReducer;
 }
 
 

@@ -1,18 +1,18 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {GameFiled} from './gameFiled';
-import {IAction, IStore} from "../redux/players-reducer/types";
+import {IStore} from "../redux/players-reducer/types";
 import {hitPlayerOne, hitPlayerTwo} from "../redux/players-reducer/action-creators";
 import {Dispatch} from "redux";
 
 interface IMapState {
-    readonly livesPlayerOne: number
-    readonly livesPlayerTwo: number
+    readonly livesPlayerOne: number;
+    readonly livesPlayerTwo: number;
 }
 
 interface IMapDispatch {
-    readonly removeLivePointFirstPlayer: (value: number) => void
-    readonly removeLivePointSecondPlayer: (value: number) => void
+    readonly removeLivePointFirstPlayer: (value: number) => void;
+    readonly removeLivePointSecondPlayer: (value: number) => void;
 }
 
 const mapStateToProps = (state: IStore): IMapState => {
@@ -23,8 +23,6 @@ const mapStateToProps = (state: IStore): IMapState => {
 };
 
 const mapDispatchToProps = (dispatch: Dispatch): IMapDispatch => {
-
-
     return {
         removeLivePointFirstPlayer: (value) => dispatch(hitPlayerOne(value)),
         removeLivePointSecondPlayer: (value) => dispatch(hitPlayerTwo(value))
@@ -32,5 +30,4 @@ const mapDispatchToProps = (dispatch: Dispatch): IMapDispatch => {
 };
 
 export type IProps = IMapState & IMapDispatch;
-
-export const GameFiledContainer = connect(mapStateToProps, mapDispatchToProps)(GameFiled)
+export const GameFiledContainer = connect(mapStateToProps, mapDispatchToProps)(GameFiled);
