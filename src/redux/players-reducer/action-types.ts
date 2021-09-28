@@ -1,0 +1,4 @@
+export const type = {
+    FIRST_PLAYER_HIT: 'FIRST_PLAYER_HIT',
+    SECOND_PLAYER_HIT: 'SECOND_PLAYER_HIT'
+}
