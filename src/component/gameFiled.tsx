@@ -1,15 +1,32 @@
 import React from 'react';
 import {IProps} from "./gameFiledContainer";
+import styles from './gameFiled.module.scss'
 
-export const GameFiled: React.FunctionComponent<IProps> = (props) => {
-    return (<div>
-        <div>
-            Lives: {props.livesPlayerOne}
+export const GameFiled: React.FunctionComponent<IProps> = ({
+                                                               livesPlayerOne,
+                                                               livesPlayerTwo,
+                                                               removeLivePointFirstPlayer,
+                                                               removeLivePointSecondPlayer
+                                                           }) => {
+    const onClickHitSecondPlayer = (value: number) => () => {
+        removeLivePointSecondPlayer(value)
+    }
+    const onClickHitFirstPlayer = (value: number) => () => {
+        removeLivePointFirstPlayer(value)
+    }
+
+    return (<div className={styles.field}>
+        <div className={styles.secondPlayer}>
+            Lives: {livesPlayerTwo}
+            <button onClick={ onClickHitSecondPlayer(livesPlayerTwo - 1)}>
+                HIT
+            </button>
         </div>
-        <div></div>
-        <div>
-            Lives: {props.livesPlayerTwo}
+        <div className={styles.firstPlayer}>
+            Lives: {livesPlayerOne}
+            <button onClick={onClickHitFirstPlayer(livesPlayerOne - 1)}>
+                HIT
+            </button>
         </div>
-        <div></div>
     </div>)
 }

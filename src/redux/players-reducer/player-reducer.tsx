@@ -14,14 +14,16 @@ const playersReducer = (state = initialState, action: IAction) => {
     switch (action.type) {
         case type.FIRST_PLAYER_HIT :{
             return {
-                ...state,
-                playerTwo: action.payload
+                ...state, playerOne: {
+                    lives: action.payload
+                }
             }
         }
         case type.SECOND_PLAYER_HIT :{
             return {
-                ...state,
-                playerOne: action.payload
+                ...state, playerTwo: {
+                    lives: action.payload
+                }
             }
         }
         default: return state;
