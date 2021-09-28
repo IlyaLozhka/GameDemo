@@ -2,10 +2,14 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Random } from "./components/Random/Random";
+import { RandomPlayerCoin } from "./components/RandomPlayerCoin/RandomPlayerCoin";
 
 function App () {
 	return (
+		<>
+		<RandomPlayerCoin chooseFirstPlayer={(e) => {console.log(e)}}/>
 		<Random count={ 6 } variationCount={ 2 }/>
+		</>
 		// <div className="App">
 		//   <header className="App-header">
 		//     <img src={logo} className="App-logo" alt="logo" />
