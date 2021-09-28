@@ -1,5 +1,5 @@
 import {IAction, IPlayerReducer} from "./types";
-import {type} from "./action-types";
+import {types} from "./action-types";
 
 const initialState: IPlayerReducer = {
     playerOne: {
@@ -12,14 +12,14 @@ const initialState: IPlayerReducer = {
 
 const playersReducer = (state = initialState, action: IAction) => {
     switch (action.type) {
-        case type.FIRST_PLAYER_HIT :{
+        case types.FIRST_PLAYER_HIT :{
             return {
                 ...state, playerOne: {
                     lives: action.payload
                 }
             }
         }
-        case type.SECOND_PLAYER_HIT :{
+        case types.SECOND_PLAYER_HIT :{
             return {
                 ...state, playerTwo: {
                     lives: action.payload

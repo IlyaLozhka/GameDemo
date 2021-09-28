@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './assets/App.module.scss';
 import {BrowserRouter} from "react-router-dom";
 import {GameFiledContainer} from "./component/gameFiledContainer";
 
