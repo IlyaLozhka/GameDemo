@@ -1,32 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { Random } from "./components/Random/Random";
-import { RandomPlayerCoin } from "./components/RandomPlayerCoin/RandomPlayerCoin";
+import './assets/App.module.scss';
+import {BrowserRouter} from "react-router-dom";
+import {GameFiledContainer} from "./component/gameFiledContainer";
 
-function App () {
-	return (
-		<>
-		<RandomPlayerCoin chooseFirstPlayer={(e) => {console.log(e)}}/>
-		<Random count={ 6 } variationCount={ 2 }/>
-		</>
-		// <div className="App">
-		//   <header className="App-header">
-		//     <img src={logo} className="App-logo" alt="logo" />
-		//     <p>
-		//       Edit <code>src/App.tsx</code> and save to reload.
-		//     </p>
-		//     <a
-		//       className="App-link"
-		//       href="https://reactjs.org"
-		//       target="_blank"
-		//       rel="noopener noreferrer"
-		//     >
-		//       Learn React
-		//     </a>
-		//   </header>
-		// </div>
-	);
+const App: React.FunctionComponent = () => {
+    return (<BrowserRouter>
+      <GameFiledContainer />
+    </BrowserRouter>);
 }
 
 export default App;
