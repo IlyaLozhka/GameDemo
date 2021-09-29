@@ -2,11 +2,10 @@ import React from 'react';
 import {IProps} from "./gameFiledContainer";
 import styles from './gameFiled.module.scss'
 
-export const GameFiled: React.FunctionComponent<IProps> = ({
-                                                               livesPlayerOne,
+export const GameFiled: React.FunctionComponent<IProps> = ({   livesPlayerOne,
                                                                livesPlayerTwo,
                                                                removeLivePointFirstPlayer,
-                                                               removeLivePointSecondPlayer
+                                                               removeLivePointSecondPlayer,
                                                            }) => {
     const onClickHitSecondPlayer = (value: number) => () => {
         removeLivePointSecondPlayer(value);

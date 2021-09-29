@@ -26,6 +26,7 @@ export const Random: React.FunctionComponent<IRandom> = ({ count, variationCount
 		setState(newState);
 	}, [count, variationCount]);
 
+
 	const onItemClick = useCallback((item) => () => {
 		setState(state.filter((stateItem) => stateItem.id !== item.id));
 	},[state])
@@ -44,3 +45,4 @@ export const Random: React.FunctionComponent<IRandom> = ({ count, variationCount
 		<button onClick={startRandom}>run</button>
 	</div>
 }
+
