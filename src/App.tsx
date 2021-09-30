@@ -1,28 +1,39 @@
 import React, { useEffect} from 'react';
-import style from './assets/App.module.scss';
+import style from './App.module.scss';
 import {BrowserRouter} from "react-router-dom";
 import {GameFiledContainer} from "./component/gameFiledContainer";
 
 const App: React.FunctionComponent = () => {
-    let appHeight = window.innerHeight;
-    let appWidth = window.innerWidth;
-    let newHeight = appHeight/ 1080;
-    let newWidth = appWidth/1920;
-
     const appRef = React.useRef<HTMLDivElement>(null);
-    // h-57,8 w-71,1
+
     useEffect(() => {
-         if (appRef?.current?.style) {
-            appRef.current.style.transform = `scale(${newWidth},${newHeight})`;
+        if ((window.innerWidth / 16) * 9 < window.innerHeight) {
+            let value = (window.innerWidth * 100) / 192000;
+            let margin = (window.innerHeight - 1080 * value) / 2;
+
+            if (appRef?.current?.style) {
+                appRef.current.style.transform = `scale(${ value })`;
+                appRef.current.style.top = `${margin}px`;
+            }
+        } else {
+            let value = (window.innerHeight * 100) / 108000;
+            let margin = (window.innerWidth - 1920 * value) / 2;
+
+            if (appRef?.current?.style) {
+                appRef.current.style.transform = `scale(${ value })`;
+                appRef.current.style.left = `${margin}px`;
+            }
         }
     });
 
     return (
-        <div className={style.appWrapper} ref={appRef}>
         <BrowserRouter>
-            <GameFiledContainer/>
+            <div className={style.container}>
+                <div className={style.appWrapper} ref={appRef}>
+                    <GameFiledContainer/>
+                </div>
+            </div>
         </BrowserRouter>
-    </div>
     );
 }
 

@@ -26,4 +26,13 @@ export const addItemSecondPlayer = (item: any) => {
         payload: item
     }
 }
-
+export const removeItemFirstPlayer = () => {
+    return {
+        type: types.FIRST_PLAYER_REMOVE_ITEM,
+    }
+}
+export const removeItemSecondPlayer = () => {
+    return {
+        type: types.SECOND_PLAYER_REMOVE_ITEM,
+    }
+}
