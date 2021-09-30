@@ -1,4 +1,4 @@
-import {types} from './action-types'
+import {types} from './action-types';
 import {IAction} from "./types";
 
 export const hitPlayerOne = (lives: number): IAction => {
@@ -13,4 +13,17 @@ export const hitPlayerTwo = (lives: number) => {
         payload: lives
     }
 };
+
+export const addItemFirstPlayer = (item: any) => {
+    return {
+        type: types.FIRST_PLAYER_ADD_ITEM,
+        payload: item
+    }
+}
+export const addItemSecondPlayer = (item: any) => {
+    return {
+        type: types.SECOND_PLAYER_ADD_ITEM,
+        payload: item
+    }
+}
 
