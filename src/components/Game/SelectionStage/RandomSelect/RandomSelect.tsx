@@ -1,11 +1,13 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { playerActions, randomNumber } from "./utils";
 
-import styles from './Random.module.scss';
+import styles from './RandomSelect.module.scss';
 
 interface IRandom {
 	readonly count: number;
 	readonly variationCount: number;
+	readonly playerOrder: number;
+	readonly roundNumber: number;
 }
 
 interface itemType {
@@ -13,7 +15,7 @@ interface itemType {
 	readonly id: number;
 }
 
-export const Random: React.FunctionComponent<IRandom> = ({ count, variationCount }) => {
+export const RandomSelect: React.FunctionComponent<IRandom> = ({ count, variationCount, roundNumber, playerOrder }) => {
 	const [state, setState] = useState<ReadonlyArray<itemType>>([]);
 
 	const startRandom = useCallback(() => {
@@ -31,7 +33,12 @@ export const Random: React.FunctionComponent<IRandom> = ({ count, variationCount
 		setState(state.filter((stateItem) => stateItem.id !== item.id));
 	},[state])
 
+	useEffect(() => {
+		startRandom()
+	}, []);
+
 	return <div className={styles.container}>
+		<h3>Round {roundNumber} Player {playerOrder}</h3>
 		<div>
 			{ Boolean(state.length) && <div className={styles.randomContainer}>
 				{state.map((item) => (
@@ -42,7 +49,6 @@ export const Random: React.FunctionComponent<IRandom> = ({ count, variationCount
 					>{playerActions[item.value]}</div>))}
 			</div>}
 		</div>
-		<button onClick={startRandom}>run</button>
 	</div>
 }
 

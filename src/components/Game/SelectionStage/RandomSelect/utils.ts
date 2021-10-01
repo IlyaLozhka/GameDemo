@@ -3,6 +3,7 @@ export function randomNumber(max: number) {
 }
 
 export enum playerActions {
-	'Защита',
-	'Атака'
+	'Protect',
+	'Attack',
+	'Ether'
 }
