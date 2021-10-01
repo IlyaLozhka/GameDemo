@@ -1,4 +1,3 @@
-import React from 'react';
 import {IAction, IGameReducer} from "./types";
 import {types} from "./action-types";
 
