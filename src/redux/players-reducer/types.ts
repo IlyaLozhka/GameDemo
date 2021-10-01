@@ -1,8 +1,3 @@
-export interface IAction {
-    readonly type: string;
-    readonly payload?: any;
-}
-
 export interface IPlayerReducer {
     readonly playerOne: {
         readonly lives: number;
@@ -12,10 +7,6 @@ export interface IPlayerReducer {
         readonly lives: number;
         readonly itemArray: any;
     }
-}
-
-export interface IStore {
-    readonly playersReducer: IPlayerReducer;
 }
 
 

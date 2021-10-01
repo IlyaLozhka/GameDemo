@@ -1,10 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import style from './App.module.scss';
 import {BrowserRouter} from "react-router-dom";
-import {GameFiledContainer} from "./component/gameFiledContainer";
 import {ModalContainer} from "./components/Modal/ModalContainer";
+import { GameContainer } from "./components/Game";
 
 const App: React.FunctionComponent = () => {
+
+    const [isModalOpen, setModal] = useState(false);
+
     const appRef = React.useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -27,7 +30,6 @@ const App: React.FunctionComponent = () => {
         }
     });
 
-    const [isModalOpen, setModal] = useState(false)
 
     const switchTestPanel = (event: KeyboardEvent) => {
         if (event.code === 'Backquote') {
@@ -50,7 +52,7 @@ const App: React.FunctionComponent = () => {
             }
             <div className={style.container}>
                 <div className={style.appWrapper} ref={appRef}>
-                    <GameFiledContainer/>
+                    <GameContainer/>
                 </div>
             </div>
         </BrowserRouter>

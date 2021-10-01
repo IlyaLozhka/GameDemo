@@ -1,3 +1,14 @@
+.wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .container {
     width: 200px;
     height: 200px;
@@ -24,27 +35,27 @@
     }
 
     .second {
-        transform: rotateX(180deg);
+        transform: rotateY(180deg);
     }
 }
 
 @keyframes spinFirst {
     0% {
-        transform: rotateX(0);
+        transform: rotateY(0);
     }
 
     100% {
-        transform: rotateX(1800deg);
+        transform: rotateY(1800deg);
     }
 }
 
 @keyframes spinSecond {
     0% {
-        transform: rotateX(0);
+        transform: rotateY(0);
     }
 
     100% {
-        transform: rotateX(1980deg);
+        transform: rotateY(1980deg);
     }
 }
 

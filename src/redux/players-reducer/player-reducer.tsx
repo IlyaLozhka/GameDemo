@@ -1,5 +1,6 @@
-import {IAction, IPlayerReducer} from "./types";
+import {IAction} from "../types";
 import {types} from "./action-types";
+import { IPlayerReducer } from "./types";
 
 const initialState: IPlayerReducer = {
     playerOne: {
