@@ -7,7 +7,8 @@ import {
     hitPlayerOne,
     hitPlayerTwo, removeItemFirstPlayer, removeItemSecondPlayer
 } from "../../redux/players-reducer/action-creators";
-import {IStore} from "../../redux/players-reducer/types";
+import { IStore } from "../../redux/types";
+
 
 interface IMapDispatch {
     readonly removeLivePointFirstPlayer: (value: number) => void;

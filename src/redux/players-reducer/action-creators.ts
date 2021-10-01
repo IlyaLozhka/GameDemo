@@ -1,5 +1,5 @@
 import {types} from './action-types';
-import {IAction} from "./types";
+import {IAction} from "../types";
 
 export const hitPlayerOne = (lives: number): IAction => {
     return {

@@ -25,14 +25,14 @@ export const GameFiled: React.FunctionComponent<IProps> = (props) => {
         </div>
         <div className={styles.firstPlayer}>
             <div className={styles.valueContainer}>
-                {Array(livesPlayerOne).fill(null).map((val, index) => <div key={val + index}
-                                                                           className={styles.lives}/>)}
-            </div>
-            <span> Lives: {livesPlayerOne}</span>
-            <div className={styles.valueContainer}>
                 {itemsPlayerOne.map((val, index) => <div key={val + index} className={styles.items}/>)}
             </div>
             <span> Items: {itemsPlayerOne?.length}</span>
+            <div className={styles.valueContainer}>
+                {Array(livesPlayerOne).fill(null).map((val, index) => (
+                    <div key={val + index} className={styles.lives}/>))}
+            </div>
+            <span> Lives: {livesPlayerOne}</span>
         </div>
     </div>)
 };

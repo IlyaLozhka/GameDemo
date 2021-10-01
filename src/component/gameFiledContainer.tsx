@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import {GameFiled} from './gameFiled';
-import {IStore} from "../redux/players-reducer/types";
+import { IStore } from "../redux/types";
 
 interface IMapState {
     readonly livesPlayerOne: number;
