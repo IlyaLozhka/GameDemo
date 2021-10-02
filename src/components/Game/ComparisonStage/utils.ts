@@ -1,7 +1,3 @@
-export function randomNumber(max: number) {
-	return Math.floor(Math.random() * max);
-}
-
 export const playerActionsTypes = {
 	PROTECT: 'PROTECT',
 	ATTACK: 'ATTACK',
@@ -10,8 +6,14 @@ export const playerActionsTypes = {
 
 const {PROTECT,ATTACK,ETHER} = playerActionsTypes;
 
-export enum playerActions {
+export enum firstPlayerActions {
 	PROTECT,
 	ATTACK,
+	ETHER
+}
+
+export enum secondPlayerActions {
+	ATTACK,
+	PROTECT,
 	ETHER
 }

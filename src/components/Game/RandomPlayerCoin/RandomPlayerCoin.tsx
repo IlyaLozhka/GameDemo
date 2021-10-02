@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { randomNumber } from "./utils";
 
 import styles from './RandomPlayerCoin.module.scss';
-import { randomNumber } from "./utils";
 
 interface IRandomPlayerCoin {
 	readonly chooseFirstPlayer: (value: number) => void;
@@ -17,10 +17,10 @@ export const RandomPlayerCoin: React.FunctionComponent<IRandomPlayerCoin> = ({ch
 		setTimeout(() => {chooseFirstPlayer(answer)}, 3500);
 	},[])
 
-	return <div className={styles.wrapper}>
+	return <>
 		{answer && <div className={`${styles.container} ${answer === 1 ? styles.spinFirst : styles.spinSecond}`}>
 			<div className={styles.first}><span>1</span></div>
 			<div className={styles.second}><span>2</span></div>
 		</div>}
-	</div>
+	</>
 }
