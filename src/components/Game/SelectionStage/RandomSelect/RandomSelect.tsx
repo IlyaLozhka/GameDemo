@@ -11,7 +11,7 @@ interface IRandom {
 }
 
 interface itemType {
-	readonly value: number;
+	readonly value: string;
 	readonly id: number;
 }
 
@@ -22,7 +22,7 @@ export const RandomSelect: React.FunctionComponent<IRandom> = ({ count, variatio
 		const newState = [];
 
 		for (let i = 0; i < count; i++) {
-			newState.push({id: Date.now() + i, value: randomNumber(variationCount)});
+			newState.push({id: Date.now() + i, value: playerActions[randomNumber(variationCount)]});
 		}
 
 		setState(newState);
@@ -46,7 +46,7 @@ export const RandomSelect: React.FunctionComponent<IRandom> = ({ count, variatio
 						className={styles.randomValue}
 						key={item.id}
 						onClick={onItemClick(item)}
-					>{playerActions[item.value]}</div>))}
+					>{item.value}</div>))}
 			</div>}
 		</div>
 	</div>
