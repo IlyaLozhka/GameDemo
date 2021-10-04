@@ -4,9 +4,11 @@ import { gameSteps } from "./constants";
 import { IAction } from "../types";
 
 const initialState: IGameReducer = {
-    playerOrder: 0,
+    playerOrder: 1,
     roundNumber: 1,
-    gameStep: gameSteps.CHOOSE_FIRST_PLAYER
+    gameStep: gameSteps.SELECTION_STAGE,
+    selectionItems: [],
+    needToChangeRound: false
 }
 
 const gameReducer = (state = initialState, action: IAction) => {
@@ -21,9 +23,19 @@ const gameReducer = (state = initialState, action: IAction) => {
                 ...state, playerOrder: action.payload
             }
         }
-        case types.SET_GAME_TYPE: {
+        case types.SET_GAME_STEP: {
             return {
                 ...state, gameStep: action.payload
+            }
+        }
+        case types.SET_SELECTION_ITEM: {
+            return {
+                ...state, selectionItems: action.payload
+            }
+        }
+        case types.SET_ROUND_CHANGE: {
+            return {
+                ...state, needToChangeRound: action.payload
             }
         }
         default:

@@ -1,53 +1,28 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { playerActions, randomNumber } from "./utils";
-
+import React, { useCallback } from 'react';
 import styles from './RandomSelect.module.scss';
+import { IItemType } from "../../../../redux/players-reducer/types";
 
 interface IRandom {
-	readonly count: number;
-	readonly variationCount: number;
-	readonly playerOrder: number;
-	readonly roundNumber: number;
+	readonly selectionItems: ReadonlyArray<IItemType>;
+	readonly onItemSelect: (item: IItemType) => void;
 }
 
-interface itemType {
-	readonly value: string;
-	readonly id: number;
-}
-
-export const RandomSelect: React.FunctionComponent<IRandom> = ({ count, variationCount, roundNumber, playerOrder }) => {
-	const [state, setState] = useState<ReadonlyArray<itemType>>([]);
-
-	const startRandom = useCallback(() => {
-		const newState = [];
-
-		for (let i = 0; i < count; i++) {
-			newState.push({id: Date.now() + i, value: playerActions[randomNumber(variationCount)]});
-		}
-
-		setState(newState);
-	}, [count, variationCount]);
-
+export const RandomSelect: React.FunctionComponent<IRandom> = ({ selectionItems, onItemSelect }) => {
 
 	const onItemClick = useCallback((item) => () => {
-		setState(state.filter((stateItem) => stateItem.id !== item.id));
-	},[state])
+		onItemSelect(item);
+	}, [onItemSelect]);
 
-	useEffect(() => {
-		startRandom()
-	}, []);
-
-	return <div className={styles.container}>
-		<h3>Round {roundNumber} Player {playerOrder}</h3>
+	return <div className={ styles.container }>
 		<div>
-			{ Boolean(state.length) && <div className={styles.randomContainer}>
-				{state.map((item) => (
+			{ Boolean(selectionItems.length) && <div className={ styles.randomContainer }>
+				{ selectionItems.map((item: any) => (
 					<div
-						className={styles.randomValue}
-						key={item.id}
-						onClick={onItemClick(item)}
-					>{item.value}</div>))}
-			</div>}
+						className={ styles.randomValue }
+						key={ item.id }
+						onClick={ onItemClick(item) }
+					>{ item.value }</div>)) }
+            </div> }
 		</div>
 	</div>
 }

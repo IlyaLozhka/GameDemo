@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './App.module.scss';
 import {BrowserRouter} from "react-router-dom";
 import {ModalContainer} from "./components/Modal/ModalContainer";
