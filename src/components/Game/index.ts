@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { Game } from "./Game";
 import { IStore } from "../../redux/types";
-import { setGameType, setPlayerOrder } from "../../redux/game-reducer/action-creators";
+import { setGameStep, setPlayerOrder } from "../../redux/game-reducer/action-creators";
 import { Dispatch } from "redux";
 
 interface IMapState {
@@ -11,7 +11,7 @@ interface IMapState {
 
 interface IDispatchState {
 	readonly setPlayerOrder: (value: number) => void;
-	readonly setGameType: (gameType: string) => void;
+	readonly setGameStep: (gameType: string) => void;
 }
 
 function mapStateToProps (state: IStore): IMapState {
@@ -23,7 +23,7 @@ function mapStateToProps (state: IStore): IMapState {
 function mapDispatchToProps (dispatch: Dispatch): IDispatchState {
 	return {
 		setPlayerOrder: (val) => dispatch(setPlayerOrder(val)),
-		setGameType: (gameType) => dispatch(setGameType(gameType))
+		setGameStep: (gameType) => dispatch(setGameStep(gameType))
 	}
 }
 

@@ -5,14 +5,13 @@ import { RandomPlayerCoin } from "./RandomPlayerCoin/RandomPlayerCoin";
 import { gameSteps } from "../../redux/game-reducer/constants";
 import { SelectionStageContainer } from "./SelectionStage";
 import { ComparisonStageContainer } from "./ComparisonStage";
-
 import styles from './Game.module.scss';
 
-export const Game: React.FunctionComponent<IProps> = ({ gameStep, playerOrder, setPlayerOrder, setGameType }) => {
+export const Game: React.FunctionComponent<IProps> = ({ gameStep, setPlayerOrder, setGameStep }) => {
 
 	const onSetFirstPlayer = (order: number) => {
 		setPlayerOrder(order);
-		setGameType(gameSteps.SELECTION_STAGE);
+		setGameStep(gameSteps.SELECTION_STAGE);
 	}
 
 	const gameStepSwitcher = (step: string) => {

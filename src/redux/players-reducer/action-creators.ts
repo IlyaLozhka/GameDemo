@@ -7,6 +7,7 @@ export const hitPlayerOne = (lives: number): IAction => {
         payload: lives
     }
 };
+
 export const hitPlayerTwo = (lives: number) => {
     return {
         type: types.SECOND_PLAYER_HIT,
@@ -19,20 +20,23 @@ export const addItemFirstPlayer = (item: any) => {
         type: types.FIRST_PLAYER_ADD_ITEM,
         payload: item
     }
-}
+};
+
 export const addItemSecondPlayer = (item: any) => {
     return {
         type: types.SECOND_PLAYER_ADD_ITEM,
         payload: item
     }
-}
+};
+
 export const removeItemFirstPlayer = () => {
     return {
         type: types.FIRST_PLAYER_REMOVE_ITEM,
     }
-}
+};
+
 export const removeItemSecondPlayer = () => {
     return {
         type: types.SECOND_PLAYER_REMOVE_ITEM,
     }
-}
+};
