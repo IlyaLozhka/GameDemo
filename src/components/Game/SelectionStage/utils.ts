@@ -8,10 +8,19 @@ export const playerActionsTypes = {
 	ETHER: 'ETHER'
 }
 
-const {PROTECT,ATTACK,ETHER} = playerActionsTypes;
-
 export enum playerActions {
 	PROTECT,
 	ATTACK,
 	ETHER
 }
+
+export enum players {
+	FIRST_PLAYER = 1,
+	SECOND_PLAYER = 2
+}
+
+export const rules = {
+	'ITEM_COUNT': 6,
+	'ITEM_VARIANTS': 3
+}
+

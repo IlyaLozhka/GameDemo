@@ -1,18 +1,3 @@
-.container {
-  h3 {
-    font-size: 80px;
-    line-height: 80px;
-    margin-bottom: 80px;
-    font-weight: bold;
-  }
-
-  margin-top: -160px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
 @keyframes Appearing {
   from {
     transform: scale(.5) translateY(200px);
