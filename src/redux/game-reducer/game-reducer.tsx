@@ -6,7 +6,7 @@ import { IAction } from "../types";
 const initialState: IGameReducer = {
     playerOrder: 1,
     roundNumber: 1,
-    gameStep: gameSteps.SELECTION_STAGE,
+    gameStep: gameSteps.CHOOSE_FIRST_PLAYER,
     selectionItems: [],
     needToChangeRound: false
 }

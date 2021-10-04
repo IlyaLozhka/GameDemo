@@ -4,8 +4,6 @@ export const playerActionsTypes = {
 	ETHER: 'ETHER'
 }
 
-const {PROTECT,ATTACK,ETHER} = playerActionsTypes;
-
 export enum firstPlayerActions {
 	PROTECT,
 	ATTACK,
@@ -17,3 +15,5 @@ export enum secondPlayerActions {
 	PROTECT,
 	ETHER
 }
+
+export const comparisonDelaySecond = 2;
