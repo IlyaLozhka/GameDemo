@@ -4,19 +4,24 @@ import {Dispatch} from "redux";
 import {
     addItemFirstPlayer,
     addItemSecondPlayer,
-    hitPlayerOne,
-    hitPlayerTwo, removeItemFirstPlayer, removeItemSecondPlayer
+    setLivesFirstPlayer,
+    setLivesSecondPlayer,
+    removeItemFirstPlayer,
+    removeItemSecondPlayer,
+    setEtherFirstPlayer,
+    setEtherSecondPlayer
 } from "../../redux/players-reducer/action-creators";
-import { IStore } from "../../redux/types";
-
+import {IStore} from "../../redux/types";
 
 interface IMapDispatch {
-    readonly removeLivePointFirstPlayer: (value: number) => void;
-    readonly removeLivePointSecondPlayer: (value: number) => void;
+    readonly setLivesFirstPlayer: (value: number) => void;
+    readonly setLivesSecondPlayer: (value: number) => void;
     readonly addItemFirstPlayer: (value: any) => void;
     readonly addItemSecondPlayer: (value: any) => void;
     readonly removeItemSecondPlayer: () => void;
     readonly removeItemFirstPlayer: () => void;
+    readonly setEtherFirstPlayer: (value: number) => void;
+    readonly setEtherSecondPlayer: (value: number) => void;
 }
 
 interface IMapState {
@@ -24,7 +29,7 @@ interface IMapState {
     readonly livesPlayerTwo: number;
 }
 
-const mapStateToProps = (state:IStore):IMapState => {
+const mapStateToProps = (state: IStore): IMapState => {
     return {
         livesPlayerOne: state.playersReducer.playerOne.lives,
         livesPlayerTwo: state.playersReducer.playerTwo.lives
@@ -33,12 +38,14 @@ const mapStateToProps = (state:IStore):IMapState => {
 
 const mapDispatchToProps = (dispatch: Dispatch): IMapDispatch => {
     return {
-        removeLivePointFirstPlayer: (value) => dispatch(hitPlayerOne(value)),
-        removeLivePointSecondPlayer: (value) => dispatch(hitPlayerTwo(value)),
+        setLivesFirstPlayer: (value:number) => dispatch(setLivesFirstPlayer(value)),
+        setLivesSecondPlayer: (value:number) => dispatch(setLivesSecondPlayer(value)),
         addItemFirstPlayer: (value) => dispatch(addItemFirstPlayer(value)),
         addItemSecondPlayer: (value) => dispatch(addItemSecondPlayer(value)),
         removeItemSecondPlayer: () => dispatch(removeItemSecondPlayer()),
         removeItemFirstPlayer: () => dispatch(removeItemFirstPlayer()),
+        setEtherFirstPlayer: (value: number) => dispatch(setEtherFirstPlayer(value)),
+        setEtherSecondPlayer: (value: number) => dispatch(setEtherSecondPlayer(value))
     }
 };
 

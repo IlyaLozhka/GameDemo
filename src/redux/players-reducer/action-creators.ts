@@ -1,16 +1,16 @@
 import {types} from './action-types';
 import {IAction} from "../types";
 
-export const hitPlayerOne = (lives: number): IAction => {
+export const setLivesFirstPlayer = (lives: number): IAction => {
     return {
-        type: types.FIRST_PLAYER_HIT,
+        type: types.SET_LIVES_FIRST_PLAYER,
         payload: lives
     }
 };
 
-export const hitPlayerTwo = (lives: number) => {
+export const setLivesSecondPlayer = (lives: number) => {
     return {
-        type: types.SECOND_PLAYER_HIT,
+        type: types.SET_LIVES_SECOND_PLAYER,
         payload: lives
     }
 };
@@ -38,5 +38,19 @@ export const removeItemFirstPlayer = () => {
 export const removeItemSecondPlayer = () => {
     return {
         type: types.SECOND_PLAYER_REMOVE_ITEM,
+    }
+};
+
+export const setEtherFirstPlayer = (ether: number): IAction => {
+    return {
+        type: types.SET_ETHER_FIRST_PLAYER,
+        payload: ether
+    }
+};
+
+export const setEtherSecondPlayer = (ether: number): IAction => {
+    return {
+        type: types.SET_ETHER_SECOND_PLAYER,
+        payload: ether
     }
 };
