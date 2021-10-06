@@ -7,6 +7,8 @@ interface IMapState {
     readonly livesPlayerTwo: number;
     readonly itemsPlayerOne: ReadonlyArray<any>;
     readonly itemsPlayerTwo: ReadonlyArray<any>;
+    readonly etherFirstPlayer: number;
+    readonly etherSecondPlayer: number;
 }
 
 const mapStateToProps = (state: IStore): IMapState => {
@@ -14,7 +16,9 @@ const mapStateToProps = (state: IStore): IMapState => {
         livesPlayerOne: state.playersReducer.playerOne.lives,
         livesPlayerTwo: state.playersReducer.playerTwo.lives,
         itemsPlayerOne: state.playersReducer.playerOne.itemArray,
-        itemsPlayerTwo: state.playersReducer.playerTwo.itemArray
+        itemsPlayerTwo: state.playersReducer.playerTwo.itemArray,
+        etherFirstPlayer: state.playersReducer.playerOne.ether,
+        etherSecondPlayer: state.playersReducer.playerTwo.ether,
     }
 };
 

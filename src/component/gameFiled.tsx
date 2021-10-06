@@ -8,7 +8,9 @@ export const GameFiled: React.FunctionComponent<IProps> = (props) => {
         livesPlayerOne,
         livesPlayerTwo,
         itemsPlayerOne,
-        itemsPlayerTwo
+        itemsPlayerTwo,
+        etherFirstPlayer,
+        etherSecondPlayer
     } = props;
 
     return (<div className={styles.field}>
@@ -22,8 +24,10 @@ export const GameFiled: React.FunctionComponent<IProps> = (props) => {
             <div className={styles.valueContainer}>
                 {itemsPlayerTwo.map((val, index) => <div key={val + index} className={styles.items}/>)}
             </div>
+            <span>Ether :{etherSecondPlayer}</span>
         </div>
         <div className={styles.firstPlayer}>
+            <span>Ether : {etherFirstPlayer}</span>
             <div className={styles.valueContainer}>
                 {itemsPlayerOne.map((val, index) => <div key={val + index} className={styles.items}/>)}
             </div>

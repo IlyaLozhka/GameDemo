@@ -1,21 +1,23 @@
-import { IAction } from "../types";
-import { types } from "./action-types";
-import { IPlayerReducer } from "./types";
+import {IAction} from "../types";
+import {types} from "./action-types";
+import {IPlayerReducer} from "./types";
 
 const initialState: IPlayerReducer = {
     playerOne: {
         lives: 5,
         itemArray: [],
+        ether: 0
     },
     playerTwo: {
         lives: 5,
         itemArray: [],
+        ether: 0
     }
 };
 
 const playersReducer = (state = initialState, action: IAction) => {
     switch (action.type) {
-        case types.FIRST_PLAYER_HIT : {
+        case types.SET_LIVES_FIRST_PLAYER : {
             return {
                 ...state, playerOne: {
                     ...state.playerOne,
@@ -23,7 +25,7 @@ const playersReducer = (state = initialState, action: IAction) => {
                 }
             }
         }
-        case types.SECOND_PLAYER_HIT : {
+        case types.SET_LIVES_SECOND_PLAYER : {
             return {
                 ...state, playerTwo: {
                     ...state.playerTwo,
@@ -68,6 +70,24 @@ const playersReducer = (state = initialState, action: IAction) => {
                 playerTwo: {
                     ...state.playerTwo,
                     itemArray: state.playerTwo.itemArray.slice(0, state.playerTwo.itemArray.length - 1)
+                }
+            }
+        }
+        case types.SET_ETHER_FIRST_PLAYER : {
+            return {
+                ...state,
+                playerOne: {
+                    ...state.playerOne,
+                    ether: action.payload
+                }
+            }
+        }
+        case types.SET_ETHER_SECOND_PLAYER : {
+            return {
+                ...state,
+                playerTwo: {
+                    ...state.playerTwo,
+                    ether: action.payload
                 }
             }
         }
