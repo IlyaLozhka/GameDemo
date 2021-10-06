@@ -1,5 +1,5 @@
 import {IGameReducer} from "./types";
-import {types} from "./action-types";
+import {types} from "./actionTypes";
 import { gameSteps } from "./constants";
 import { IAction } from "../types";
 
@@ -8,7 +8,14 @@ const initialState: IGameReducer = {
     roundNumber: 1,
     gameStep: gameSteps.CHOOSE_FIRST_PLAYER,
     selectionItems: [],
-    needToChangeRound: false
+    needToChangeRound: false,
+    // Need to create comparisonReducer
+    comparisonIndex: 0,
+    comparisonItems: {
+        playerTwoItems: [],
+        playerOneItems: []
+    },
+    comparisonStart: false,
 }
 
 const gameReducer = (state = initialState, action: IAction) => {
@@ -36,6 +43,21 @@ const gameReducer = (state = initialState, action: IAction) => {
         case types.SET_ROUND_CHANGE: {
             return {
                 ...state, needToChangeRound: action.payload
+            }
+        }
+        case types.SET_COMPARISON_INDEX: {
+            return {
+                ...state, comparisonIndex: action.payload
+            }
+        }
+        case types.SET_COMPARISON_ITEMS: {
+            return {
+                ...state, comparisonItems: action.payload
+            }
+        }
+        case types.SET_COMPARISON_START: {
+            return {
+                ...state, comparisonStart: action.payload
             }
         }
         default:

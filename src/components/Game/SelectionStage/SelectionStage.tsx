@@ -4,9 +4,9 @@ import {IProps} from "./index";
 import {gameSteps} from "../../../redux/game-reducer/constants";
 
 import styles from './SelectionStage.module.scss';
-import {IItemType} from "../../../redux/players-reducer/types";
 import {playerActions, players, randomNumber, rules} from "./utils";
 import {uid} from "uid";
+import { IItemType } from "../../../redux/types";
 
 export const SelectionStage: React.FunctionComponent<IProps> = (props) => {
 
@@ -24,10 +24,6 @@ export const SelectionStage: React.FunctionComponent<IProps> = (props) => {
         setGameStep,
         setRoundChange,
         needToChangeRound,
-        setEtherFirstPlayer,
-        setEtherSecondPlayer,
-        etherFirstPlayer,
-        etherSecondPlayer
     } = props
 
     const startRandom = useCallback(() => {
@@ -47,14 +43,6 @@ export const SelectionStage: React.FunctionComponent<IProps> = (props) => {
             .filter((arrayItem: IItemType) => arrayItem.id !== item.id);
 
         setSelectionItems(filteredSelectionItem);
-
-        if (item.value === 'ETHER') {
-            if (playerOrder === players.FIRST_PLAYER) {
-                setEtherFirstPlayer(etherFirstPlayer + 1);
-            } else {
-                setEtherSecondPlayer(etherSecondPlayer + 1);
-            }
-        }
 
         if (playerOrder === players.FIRST_PLAYER) {
             setSelectedItemFirstPlayer(item);

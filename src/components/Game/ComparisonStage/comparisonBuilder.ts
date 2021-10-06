@@ -1,33 +1,31 @@
 import { playerActionsTypes } from "./utils";
 import { uid } from "uid";
-
+import { IComparisonItem, IItemType } from "../../../redux/types";
+import { IComparisonItems } from "../../../redux/game-reducer/types";
 
 const createEmptyValues = (count: number) => {
 	const values = [];
 
 	for (let i = 0; i < count; i ++) {
-		values.push({id: uid(), value: ''})
+		values.push({id: uid(), value: '', visible: false})
 	}
 
 	return values;
 }
 
-interface IAction {
-	readonly value: string;
-	readonly id: string | number;
-}
+export const comparisonBuilder = (firstPlayerItems: ReadonlyArray<IItemType>, secondPlayerItems: ReadonlyArray<IItemType>): IComparisonItems => {
+	const formatFirstPlayerItem = firstPlayerItems.map((item) => ({...item, visible: true}));
+	const formatSecondPlayerItem = secondPlayerItems.map((item) => ({...item, visible: true}));
 
+	const firstPlayerAttack: IComparisonItem[] = [];
+	const firstPlayerProtect: IComparisonItem[] = [];
+	const firstPlayerEther: IComparisonItem[] = [];
 
-export const comparisonBuilder = (firstPlayerItem: any, secondPlayerItem: any) => {
-	const firstPlayerAttack: IAction[] = [];
-	const firstPlayerProtect: IAction[] = [];
-	const firstPlayerEther: IAction[] = [];
+	const secondPlayerAttack: IComparisonItem[] = [];
+	const secondPlayerProtect: IComparisonItem[] = [];
+	const secondPlayerEther: IComparisonItem[] = [];
 
-	const secondPlayerAttack: IAction[] = [];
-	const secondPlayerProtect: IAction[] = [];
-	const secondPlayerEther: IAction[] = [];
-
-	const sorter = (player: number, item: IAction) => {
+	const sorter = (player: number, item: IComparisonItem) => {
 		if (player === 1) {
 			switch (item.value) {
 				case playerActionsTypes.ATTACK: firstPlayerAttack.push(item);
@@ -49,9 +47,9 @@ export const comparisonBuilder = (firstPlayerItem: any, secondPlayerItem: any) =
 		}
 	}
 
-	for ( let i = 0; i < firstPlayerItem.length; i++ ) {
-		sorter(1, firstPlayerItem[i]);
-		sorter(2, secondPlayerItem[i]);
+	for ( let i = 0; i < formatFirstPlayerItem.length; i++ ) {
+		sorter(1, formatFirstPlayerItem[i]);
+		sorter(2, formatSecondPlayerItem[i]);
 	}
 
 
@@ -82,5 +80,4 @@ export const comparisonBuilder = (firstPlayerItem: any, secondPlayerItem: any) =
 	playerTwoItems.push(...secondPlayerEther);
 
 	return { playerOneItems, playerTwoItems };
-
 }

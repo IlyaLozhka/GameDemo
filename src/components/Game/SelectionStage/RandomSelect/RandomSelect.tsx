@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import styles from './RandomSelect.module.scss';
-import { IItemType } from "../../../../redux/players-reducer/types";
+import { IItemType } from "../../../../redux/types";
 
 interface IRandom {
 	readonly selectionItems: ReadonlyArray<IItemType>;

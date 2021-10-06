@@ -11,3 +11,12 @@ export interface IStore {
 	readonly playersReducer: IPlayerReducer;
 	readonly gameReducer: IGameReducer;
 }
+
+export interface IItemType {
+	readonly value: string;
+	readonly id: string;
+}
+
+export interface IComparisonItem extends IItemType{
+	visible: boolean;
+}
