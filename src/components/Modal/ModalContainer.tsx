@@ -10,7 +10,7 @@ import {
     removeItemSecondPlayer,
     setEtherFirstPlayer,
     setEtherSecondPlayer
-} from "../../redux/players-reducer/action-creators";
+} from "../../redux/players-reducer/actionCreators";
 import {IStore} from "../../redux/types";
 
 interface IMapDispatch {

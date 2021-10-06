@@ -16,4 +16,4 @@ export enum secondPlayerActions {
 	ETHER
 }
 
-export const comparisonDelaySecond = 2;
+export const comparisonDelaySecond = 1000;

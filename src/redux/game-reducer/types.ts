@@ -1,4 +1,9 @@
-import { IItemType } from "../players-reducer/types";
+import { IComparisonItem, IItemType } from "../types";
+
+export interface IComparisonItems {
+    readonly playerOneItems: ReadonlyArray<IComparisonItem>;
+    readonly playerTwoItems: ReadonlyArray<IComparisonItem>;
+}
 
 export interface IGameReducer {
     readonly playerOrder: number;
@@ -6,4 +11,7 @@ export interface IGameReducer {
     readonly gameStep: string;
     readonly selectionItems: ReadonlyArray<IItemType>;
     readonly needToChangeRound: boolean;
+    readonly comparisonItems: IComparisonItems;
+    readonly comparisonIndex: number;
+    readonly comparisonStart: boolean;
 }
