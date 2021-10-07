@@ -16,17 +16,8 @@
 }
 
 .randomValue {
-  width: 200px;
-  height: 200px;
-  border-radius: 100%;
-  background: #61dafb;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
   position: relative;
   margin: 0 10px;
-  font-size: 40px;
 
   &:hover {
     cursor: pointer;

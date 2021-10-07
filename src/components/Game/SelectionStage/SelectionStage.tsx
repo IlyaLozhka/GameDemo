@@ -54,7 +54,7 @@ export const SelectionStage: React.FunctionComponent<IProps> = (props) => {
 
     useEffect(() => {
         startRandom();
-    }, [playerOrder, roundNumber, startRandom]);
+    }, [playerOrder, roundNumber]);
 
     
     const changeOrder = useCallback(() => {
