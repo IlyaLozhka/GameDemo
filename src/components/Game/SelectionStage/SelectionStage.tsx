@@ -1,12 +1,13 @@
-import React, {useCallback, useEffect} from "react";
-import {RandomSelect} from "./RandomSelect/RandomSelect";
-import {IProps} from "./index";
-import {gameSteps} from "../../../redux/game-reducer/constants";
+import React, { useCallback, useEffect } from "react";
+import { RandomSelect } from "./RandomSelect/RandomSelect";
+import { IProps } from "./index";
+import { gameSteps } from "../../../redux/game-reducer/constants";
 
 import styles from './SelectionStage.module.scss';
-import {playerActions, players, randomNumber, rules} from "./utils";
-import {uid} from "uid";
+import { playerActions, players, randomNumber, rules } from "./utils";
+import { uid } from "uid";
 import { IItemType } from "../../../redux/types";
+import { nextSelectionStep, playerSwitcher } from "./selectionRules";
 
 export const SelectionStage: React.FunctionComponent<IProps> = (props) => {
 
@@ -22,7 +23,6 @@ export const SelectionStage: React.FunctionComponent<IProps> = (props) => {
         firstPlayerItemLength,
         secondPlayerItemLength,
         setGameStep,
-        setRoundChange,
         needToChangeRound,
     } = props
 
@@ -36,7 +36,7 @@ export const SelectionStage: React.FunctionComponent<IProps> = (props) => {
             newState.push({id: uid(), value: playerActions[randomNumber(rules.ITEM_VARIANTS)]});
         }
         setSelectionItems(newState);
-    }, [playerOrder, firstPlayerItemLength, secondPlayerItemLength]);
+    }, [playerOrder, firstPlayerItemLength, secondPlayerItemLength, setSelectionItems]);
 
     const onItemSelect = useCallback((item) => {
         const filteredSelectionItem = selectionItems
@@ -50,41 +50,27 @@ export const SelectionStage: React.FunctionComponent<IProps> = (props) => {
             setSelectedItemSecondPlayer(item);
         }
 
-    }, [selectionItems, playerOrder]);
+    }, [selectionItems, setSelectionItems, playerOrder, setSelectedItemFirstPlayer, setSelectedItemSecondPlayer]);
 
     useEffect(() => {
         startRandom();
-    }, [playerOrder, roundNumber]);
+    }, [playerOrder, roundNumber, startRandom]);
 
+    
+    const changeOrder = useCallback(() => {
+       setPlayerOrder(playerSwitcher(playerOrder))
+    }, [playerOrder, setPlayerOrder]);
 
-    // REFACTORING LOGIC WITH NEW FEATURES
-    const onChangeOrder = () => {
-        if (playerOrder === players.FIRST_PLAYER) {
-            setPlayerOrder(players.SECOND_PLAYER);
+    const changeRound = useCallback( () => {
+        if (roundNumber !== 3) {
+            roundNumberChanged(roundNumber + 1);
         } else {
-            setPlayerOrder(players.FIRST_PLAYER);
+            setGameStep(gameSteps.COMPARISON_STAGE);
         }
-    };
-
-    const onChangeRound = () => {
-        roundNumberChanged(roundNumber + 1);
-    };
+    }, [roundNumber, roundNumberChanged, setGameStep]);
 
     const onNextStepClick = () => {
-        if (needToChangeRound && roundNumber === 3) {
-            setGameStep(gameSteps.COMPARISON_STAGE);
-        } else {
-            if (!needToChangeRound) {
-                setRoundChange(!needToChangeRound);
-                onChangeOrder();
-            }
-
-            if (needToChangeRound) {
-                onChangeRound();
-                setRoundChange(!needToChangeRound);
-                onChangeOrder();
-            }
-        }
+        nextSelectionStep({ ...props, changeRound, changeOrder });
     };
 
     return <div className={styles.container}>
