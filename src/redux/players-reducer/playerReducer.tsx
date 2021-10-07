@@ -37,10 +37,14 @@ const playersReducer = (state = initialState, action: IAction) => {
             return {
                 ...state, playerOne: {
                     ...state.playerOne,
-                    itemArray: [
-                        ...state.playerOne.itemArray,
-                        action.payload
-                    ]
+                    itemArray: action.payload instanceof Array
+                        ?
+                        [ ...state.playerOne.itemArray, ...action.payload ]
+                        :
+                        [
+                            ...state.playerOne.itemArray,
+                            action.payload
+                        ]
                 }
             }
         }
@@ -48,7 +52,11 @@ const playersReducer = (state = initialState, action: IAction) => {
             return {
                 ...state, playerTwo: {
                     ...state.playerTwo,
-                    itemArray: [
+                    itemArray:  action.payload instanceof Array
+                        ?
+                        [...state.playerTwo.itemArray, ...action.payload]
+                        :
+                        [
                         ...state.playerTwo.itemArray,
                         action.payload
                     ]

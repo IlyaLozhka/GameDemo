@@ -1,5 +1,5 @@
 import {types} from './actionTypes';
-import {IAction} from "../types";
+import { IAction, IItemType } from "../types";
 
 export const setLivesFirstPlayer = (lives: number): IAction => {
     return {
@@ -15,14 +15,14 @@ export const setLivesSecondPlayer = (lives: number) => {
     }
 };
 
-export const addItemFirstPlayer = (item: any) => {
+export const addItemFirstPlayer = (item: IItemType | IItemType[]) => {
     return {
         type: types.FIRST_PLAYER_ADD_ITEM,
         payload: item
     }
 };
 
-export const addItemSecondPlayer = (item: any) => {
+export const addItemSecondPlayer = (item: IItemType | IItemType[]) => {
     return {
         type: types.SECOND_PLAYER_ADD_ITEM,
         payload: item

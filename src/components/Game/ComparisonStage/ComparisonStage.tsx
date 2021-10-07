@@ -10,16 +10,7 @@ export const ComparisonStage:React.FunctionComponent<IProps> = (props) => {
 	const {
 		playerOneItems,
 		playerTwoItems,
-		playerOneLives,
-		playerTwoLives,
-		playerOneEther,
-		playerTwoEther,
-		setFirstPlayerLives,
-		setSecondPlayerLives,
-		setFirstPlayerEther,
-		setSecondPlayerEther,
 		comparisonIndex,
-		setComparisonIndex,
 		comparisonItems,
 		setComparisonItems,
 		comparisonStart,
@@ -33,20 +24,7 @@ export const ComparisonStage:React.FunctionComponent<IProps> = (props) => {
 
 	useEffect(() => {
 		if (comparisonStart) {
-			comparator({
-				playerOneLives,
-				playerTwoLives,
-				playerOneEther,
-				playerTwoEther,
-				setFirstPlayerLives,
-				setSecondPlayerLives,
-				setFirstPlayerEther,
-				setSecondPlayerEther,
-				setComparisonIndex,
-				comparisonItems,
-				setComparisonItems,
-				comparisonIndex
-			});
+			comparator({...props});
 		}
 	},[comparisonIndex, comparisonStart]);
 

@@ -33,12 +33,12 @@ function mapStateToProps(state: IStore): IMapState {
 }
 
 interface IMapDispatch {
-    readonly setSelectedItemFirstPlayer: (value: any) => void;
-    readonly setSelectedItemSecondPlayer: (value: any) => void;
+    readonly setSelectedItemFirstPlayer: (value: IItemType | IItemType[]) => void;
+    readonly setSelectedItemSecondPlayer: (value: IItemType | IItemType[]) => void;
     readonly setSelectionItems: (value: any) => void;
     readonly setPlayerOrder: (value: number) => void;
     readonly roundNumberChanged: (value: number) => void;
-    readonly setGameStep: (value: any) => void;
+    readonly setGameStep: (value: string) => void;
     readonly setRoundChange: (value: boolean) => void;
 }
 
