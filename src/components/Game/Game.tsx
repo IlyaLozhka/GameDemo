@@ -1,5 +1,5 @@
 import React from "react";
-import { GameFiledContainer } from "../../component/gameFiledContainer";
+import { GameFiledContainer } from "./PlayersArea";
 import { IProps } from "./index";
 import { gameSteps } from "../../redux/game-reducer/constants";
 import { SelectionStageContainer } from "./SelectionStage";

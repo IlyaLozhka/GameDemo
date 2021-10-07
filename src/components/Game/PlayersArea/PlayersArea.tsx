@@ -1,8 +1,8 @@
 import React from 'react';
-import {IProps} from "./gameFiledContainer";
-import styles from './gameFiled.module.scss'
+import { IProps } from "./index";
+import styles from './PlayersArea.module.scss'
 
-export const GameFiled: React.FunctionComponent<IProps> = (props) => {
+export const PlayersArea: React.FunctionComponent<IProps> = (props) => {
 
     const {
         livesPlayerOne,

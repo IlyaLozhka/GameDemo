@@ -1,6 +1,6 @@
-import {connect} from "react-redux";
-import {GameFiled} from './gameFiled';
-import { IStore } from "../redux/types";
+import { connect } from "react-redux";
+import { PlayersArea } from './PlayersArea';
+import { IStore } from "../../../redux/types";
 
 interface IMapState {
     readonly livesPlayerOne: number;
@@ -23,4 +23,4 @@ const mapStateToProps = (state: IStore): IMapState => {
 };
 
 export type IProps = IMapState ;
-export const GameFiledContainer = connect(mapStateToProps)(GameFiled);
+export const GameFiledContainer = connect(mapStateToProps)(PlayersArea);
