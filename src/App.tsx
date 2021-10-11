@@ -1,12 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import style from './App.module.scss';
 import {BrowserRouter} from "react-router-dom";
-import {ModalContainer} from "./components/Modal/ModalContainer";
-import { GameContainer } from "./components/Game";
+import {ModalTestContainer} from "./components/ModalOfGame/ModalTestContainer";
+import {GameContainer} from "./components/Game";
+import {ModalPlayerContainer} from "./components/ModalOfPlayersWins/ModalPlayerContainer";
+import {IProps} from "./AppContainer";
 
-const App: React.FunctionComponent = () => {
+const App: React.FunctionComponent<IProps> = (props) => {
 
-    const [isModalOpen, setModal] = useState(false);
+    const {
+        livesPlayerTwo,
+        livesPlayerOne
+    } = props;
+
+    const [isTestModalOpen, setTestModal] = useState(false);
+    const [isPlayerModalOpen, setPlayerModal] = useState(false);
 
     const appRef = React.useRef<HTMLDivElement>(null);
 
@@ -30,10 +38,9 @@ const App: React.FunctionComponent = () => {
         }
     });
 
-
     const switchTestPanel = (event: KeyboardEvent) => {
         if (event.code === 'Backquote') {
-            setModal(isModalOpen => !isModalOpen);
+            setTestModal(isTestModalOpen => !isTestModalOpen);
         }
     };
 
@@ -45,13 +52,22 @@ const App: React.FunctionComponent = () => {
         }
     }, []);
 
+    useEffect(() => {
+        if (livesPlayerTwo === 0 || livesPlayerOne === 0) {
+            setPlayerModal(isPlayerModalOpen => !isPlayerModalOpen)
+        }
+    }, [livesPlayerTwo, livesPlayerOne])
+
     return (
         <BrowserRouter>
             {
-                isModalOpen && <ModalContainer/>
+                isTestModalOpen && <ModalTestContainer/>
             }
             <div className={style.container}>
                 <div className={style.appWrapper} ref={appRef}>
+                    {
+                        isPlayerModalOpen && <ModalPlayerContainer/>
+                    }
                     <GameContainer/>
                 </div>
             </div>

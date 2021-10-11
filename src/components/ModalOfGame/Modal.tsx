@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './modal.module.scss';
 import ReactDOM from "react-dom";
-import {IProps} from "./ModalContainer";
+import {IProps} from "./ModalTestContainer";
 import {uid} from "uid";
 import {playerActions, randomNumber, rules} from "../Game/SelectionStage/utils";
 

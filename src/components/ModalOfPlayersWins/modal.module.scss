@@ -1,0 +1,13 @@
+.mainBlock {
+  background-color: darkseagreen;
+  position: absolute;
+  z-index: 20;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  font-size: 36px;
+  color: aliceblue;
+  padding: 10px;
+  border: darkgreen 3px solid;
+}

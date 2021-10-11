@@ -50,4 +50,4 @@ const mapDispatchToProps = (dispatch: Dispatch): IMapDispatch => {
 };
 
 export type IProps = IMapDispatch & IMapState;
-export const ModalContainer = connect(mapStateToProps, mapDispatchToProps)(Modal);
+export const ModalTestContainer = connect(mapStateToProps, mapDispatchToProps)(Modal);
