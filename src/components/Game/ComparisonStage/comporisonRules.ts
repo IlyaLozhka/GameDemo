@@ -65,7 +65,6 @@ export const comparator = (props: IComparator) => {
 				setSecondPlayerLives(playerTwoLives - 1);
 			} else {
 				setSecondPlayerLives(playerTwoLives - 1);
-				alert('player 2 lose');
 				return null;
 			}
 		}
