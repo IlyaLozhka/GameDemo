@@ -54,7 +54,6 @@ export const comparator = (props: IComparator) => {
 				setFirstPlayerLives(playerOneLives - 1);
 			} else {
 				setFirstPlayerLives(playerOneLives - 1);
-				alert('player 1 lose');
 				return null;
 			}
 		}

@@ -6,8 +6,15 @@ import { SelectionStageContainer } from "./SelectionStage";
 import { ComparisonStageContainer } from "./ComparisonStage";
 import styles from './Game.module.scss';
 import { RandomPlayerCoinContainer } from "./RandomPlayerCoin";
+import { ModalWinContainer } from "../Modal/ModalPlayersWins/ModalWinContainer";
 
-export const Game: React.FunctionComponent<IProps> = ({ gameStep }) => {
+export const Game: React.FunctionComponent<IProps> = (props) => {
+
+	const {
+		gameStep,
+		livesPlayerTwo,
+		livesPlayerOne
+	} = props;
 
 	const gameStepSwitcher = (step: string) => {
 		switch (step) {
@@ -16,12 +23,15 @@ export const Game: React.FunctionComponent<IProps> = ({ gameStep }) => {
 			case gameSteps.COMPARISON_STAGE: return <ComparisonStageContainer/>
 			default: return null;
 		}
-	}
+	};
 
 	return <>
+		{
+			(livesPlayerTwo === 0 || livesPlayerOne === 0) && <ModalWinContainer/>
+		}
 		<GameFiledContainer/>
 		<div className={styles.stageWrapper}>
 			{gameStepSwitcher(gameStep)}
 		</div>
 	</>
-}
+};
