@@ -1,20 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import style from './App.module.scss';
-import {BrowserRouter} from "react-router-dom";
-import {ModalTestContainer} from "./components/ModalOfGame/ModalTestContainer";
-import {GameContainer} from "./components/Game";
-import {ModalPlayerContainer} from "./components/ModalOfPlayersWins/ModalPlayerContainer";
-import {IProps} from "./AppContainer";
+import { BrowserRouter } from "react-router-dom";
+import { ModalTestContainer } from "./components/Modal/ModalTest/ModalTestContainer";
+import { GameContainer } from "./components/Game";
 
-const App: React.FunctionComponent<IProps> = (props) => {
-
-    const {
-        livesPlayerTwo,
-        livesPlayerOne
-    } = props;
+const App: React.FunctionComponent = () => {
 
     const [isTestModalOpen, setTestModal] = useState(false);
-    const [isPlayerModalOpen, setPlayerModal] = useState(false);
 
     const appRef = React.useRef<HTMLDivElement>(null);
 
@@ -52,12 +44,6 @@ const App: React.FunctionComponent<IProps> = (props) => {
         }
     }, []);
 
-    useEffect(() => {
-        if (livesPlayerTwo === 0 || livesPlayerOne === 0) {
-            setPlayerModal(isPlayerModalOpen => !isPlayerModalOpen)
-        }
-    }, [livesPlayerTwo, livesPlayerOne])
-
     return (
         <BrowserRouter>
             {
@@ -65,9 +51,6 @@ const App: React.FunctionComponent<IProps> = (props) => {
             }
             <div className={style.container}>
                 <div className={style.appWrapper} ref={appRef}>
-                    {
-                        isPlayerModalOpen && <ModalPlayerContainer/>
-                    }
                     <GameContainer/>
                 </div>
             </div>

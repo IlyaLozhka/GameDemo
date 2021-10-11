@@ -1,7 +1,7 @@
-import React from 'react';
-import {connect} from "react-redux";
-import App from "./App";
-import {IStore} from "./redux/types";
+import React from "react";
+import { connect } from "react-redux";
+import { Modal } from "./Modal";
+import { IStore } from "../../../redux/types";
 
 interface IMapState {
     readonly livesPlayerOne: number;
@@ -16,4 +16,4 @@ const mapStateToProps = (state:IStore):IMapState => {
 };
 
 export type IProps = IMapState;
-export const AppContainer = connect(mapStateToProps)(App);
+export const ModalWinContainer = connect(mapStateToProps)(Modal);

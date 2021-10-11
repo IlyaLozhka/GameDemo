@@ -1,6 +1,6 @@
-import {connect} from "react-redux";
-import {Modal} from "./Modal";
-import {Dispatch} from "redux";
+import { connect } from "react-redux";
+import { Modal } from "./Modal";
+import { Dispatch } from "redux";
 import {
     addItemFirstPlayer,
     addItemSecondPlayer,
@@ -10,8 +10,8 @@ import {
     removeItemSecondPlayer,
     setEtherFirstPlayer,
     setEtherSecondPlayer
-} from "../../redux/players-reducer/actionCreators";
-import {IStore} from "../../redux/types";
+} from "../../../redux/players-reducer/actionCreators";
+import { IStore } from "../../../redux/types";
 
 interface IMapDispatch {
     readonly setLivesFirstPlayer: (value: number) => void;
