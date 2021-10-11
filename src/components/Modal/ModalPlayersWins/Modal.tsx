@@ -15,21 +15,26 @@ export const Modal: React.FunctionComponent<IProps> = (props) => {
     } = props;
 
     return ReactDOM.createPortal(
-        <div className={style.mainBlock}>
-            {
-                livesPlayerOne === 0
-                    ? <div>
-                        <span>PLAYER TWO WINS</span>
-                    </div>
-                    : null
-            }
-            {
-                livesPlayerTwo === 0
-                    ? <div>
-                        <span>PLAYER ONE WINS</span>
-                    </div>
-                    : null
-            }
+        <div>
+            <div className={style.mainBlock}>
+                {
+                    livesPlayerOne === 0
+                        ? <div>
+                            <span>PLAYER TWO WINS</span>
+                        </div>
+                        : null
+                }
+                {
+                    livesPlayerTwo === 0
+                        ? <div>
+                            <span>PLAYER ONE WINS</span>
+                        </div>
+                        : null
+                }
+            </div>
+            <div className={style.reloadBlock}>
+                <span>Reload the page to continue</span>
+            </div>
         </div>
         , playerModal)
 };
