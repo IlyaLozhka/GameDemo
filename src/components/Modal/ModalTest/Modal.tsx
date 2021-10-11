@@ -1,9 +1,9 @@
 import React from 'react';
-import style from './modal.module.scss';
+import style from './Modal.module.scss';
 import ReactDOM from "react-dom";
-import {IProps} from "./ModalContainer";
-import {uid} from "uid";
-import {playerActions, randomNumber, rules} from "../Game/SelectionStage/utils";
+import { IProps } from "./ModalTestContainer";
+import { uid } from "uid";
+import { playerActions, randomNumber, rules } from "../../Game/SelectionStage/utils";
 
 let rootModal = document.createElement('div');
 rootModal.id = 'testModal';
@@ -23,25 +23,25 @@ export const Modal: React.FunctionComponent<IProps> = (props) => {
         setEtherSecondPlayer
     } = props;
 
-    const etherRef = React.useRef<HTMLInputElement>(null)
-    const livesRef = React.useRef<HTMLInputElement>(null)
+    const etherRef = React.useRef<HTMLInputElement>(null);
+    const livesRef = React.useRef<HTMLInputElement>(null);
 
     const onSetterEtherFirstPlayer = () => {
         const val = etherRef?.current?.value;
         setEtherFirstPlayer(+val!)
-    }
+    };
     const onSetterEtherSecondPlayer = () => {
         const val = etherRef?.current?.value;
         setEtherSecondPlayer(+val!)
-    }
+    };
     const onSetterLivesFirstPlayer = () => {
         const val = livesRef?.current?.value;
         setLivesFirstPlayer(+val!)
-    }
+    };
     const onSetterLivesSecondPlayer = () => {
         const val = livesRef?.current?.value;
         setLivesSecondPlayer(+val!)
-    }
+    };
 
     return ReactDOM.createPortal(
         <div className={style.modal}>
@@ -91,6 +91,6 @@ export const Modal: React.FunctionComponent<IProps> = (props) => {
             </div>
         </div>,
         rootModal
-    )
+    );
 };
 

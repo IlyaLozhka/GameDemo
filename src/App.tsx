@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import style from './App.module.scss';
-import {BrowserRouter} from "react-router-dom";
-import {ModalContainer} from "./components/Modal/ModalContainer";
+import { BrowserRouter } from "react-router-dom";
+import { ModalTestContainer } from "./components/Modal/ModalTest/ModalTestContainer";
 import { GameContainer } from "./components/Game";
 
 const App: React.FunctionComponent = () => {
 
-    const [isModalOpen, setModal] = useState(false);
+    const [isTestModalOpen, setTestModal] = useState(false);
 
     const appRef = React.useRef<HTMLDivElement>(null);
 
@@ -30,10 +30,9 @@ const App: React.FunctionComponent = () => {
         }
     });
 
-
     const switchTestPanel = (event: KeyboardEvent) => {
         if (event.code === 'Backquote') {
-            setModal(isModalOpen => !isModalOpen);
+            setTestModal(isTestModalOpen => !isTestModalOpen);
         }
     };
 
@@ -48,7 +47,7 @@ const App: React.FunctionComponent = () => {
     return (
         <BrowserRouter>
             {
-                isModalOpen && <ModalContainer/>
+                isTestModalOpen && <ModalTestContainer/>
             }
             <div className={style.container}>
                 <div className={style.appWrapper} ref={appRef}>
