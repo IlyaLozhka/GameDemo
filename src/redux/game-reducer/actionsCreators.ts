@@ -57,3 +57,16 @@ export const setComparisonStart = (payload: boolean): IAction => {
 		payload
 	}
 };
+
+export const setInitialOrder = (payload: number): IAction => {
+	return {
+		type: types.SET_INITIAL_ORDER,
+		payload
+	}
+};
+
+export const resetComparisonStage = (): IAction => {
+	return {
+		type: types.RESET_COMPARISON_STAGE,
+	}
+};

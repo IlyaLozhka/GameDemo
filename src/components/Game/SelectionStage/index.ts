@@ -8,7 +8,7 @@ import {
 import {Dispatch} from "redux";
 import {
     roundNumberChanged,
-    setGameStep,
+    setGameStep, setInitialOrder,
     setPlayerOrder, setRoundChange,
     setSelectionItems
 } from "../../../redux/game-reducer/actionsCreators";
@@ -20,6 +20,7 @@ interface IMapState {
     readonly firstPlayerItemLength: number;
     readonly secondPlayerItemLength: number;
     readonly needToChangeRound: boolean;
+    readonly initialOrder: number;
 }
 
 function mapStateToProps(state: IStore): IMapState {
@@ -29,6 +30,7 @@ function mapStateToProps(state: IStore): IMapState {
         playerOrder, roundNumber, selectionItems: selectionItems, needToChangeRound,
         firstPlayerItemLength: state.playersReducer.playerOne.itemArray.length,
         secondPlayerItemLength: state.playersReducer.playerTwo.itemArray.length,
+        initialOrder: state.gameReducer.initialOrder
     }
 }
 
@@ -40,6 +42,8 @@ interface IMapDispatch {
     readonly roundNumberChanged: (value: number) => void;
     readonly setGameStep: (value: string) => void;
     readonly setRoundChange: (value: boolean) => void;
+    readonly setInitialOrder: (value: number) => void;
+    readonly resetSelectionStage: () => void;
 }
 
 const mapDispatchToProps = (dispatch: Dispatch): IMapDispatch => {
@@ -51,6 +55,11 @@ const mapDispatchToProps = (dispatch: Dispatch): IMapDispatch => {
         roundNumberChanged: (value: number) => dispatch(roundNumberChanged(value)),
         setGameStep: (value: any) => dispatch(setGameStep(value)),
         setRoundChange: (value: boolean) => dispatch(setRoundChange(value)),
+        setInitialOrder: (value: number) => dispatch(setInitialOrder(value)),
+        resetSelectionStage: () => {
+            dispatch(setRoundChange(false));
+            dispatch(roundNumberChanged(1));
+        }
     }
 }
 

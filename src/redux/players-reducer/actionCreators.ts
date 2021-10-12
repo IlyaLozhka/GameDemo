@@ -1,4 +1,4 @@
-import {types} from './actionTypes';
+import { types } from './actionTypes';
 import { IAction, IItemType } from "../types";
 
 export const setLivesFirstPlayer = (lives: number): IAction => {
@@ -52,5 +52,11 @@ export const setEtherSecondPlayer = (ether: number): IAction => {
     return {
         type: types.SET_ETHER_SECOND_PLAYER,
         payload: ether
+    }
+};
+
+export const resetItemsOfPlayers = () => {
+    return {
+        type: types.RESET_ITEMS
     }
 };

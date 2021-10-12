@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { RandomPlayerCoin } from "./RandomPlayerCoin";
 import { Dispatch } from "redux";
-import { setGameStep, setPlayerOrder } from "../../../redux/game-reducer/actionsCreators";
+import { setGameStep, setInitialOrder, setPlayerOrder } from "../../../redux/game-reducer/actionsCreators";
 import { IStore } from "../../../redux/types";
 import { gameSteps } from "../../../redux/game-reducer/constants";
 
@@ -22,7 +22,10 @@ function mapStateToProps (state: IStore): IMapState {
 
 function mapDispatchToProps (dispatch: Dispatch): IMapDispatch {
 	return {
-		chooseFirstPlayer: (value) => dispatch(setPlayerOrder(value)),
+		chooseFirstPlayer: (value) => {
+			dispatch(setPlayerOrder(value))
+			dispatch(setInitialOrder(value))
+		},
 		setSelectionType: () => dispatch(setGameStep(gameSteps.SELECTION_STAGE))
 	};
 }

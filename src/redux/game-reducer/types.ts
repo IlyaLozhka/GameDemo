@@ -6,6 +6,7 @@ export interface IComparisonItems {
 }
 
 export interface IGameReducer {
+    readonly initialOrder: number;
     readonly playerOrder: number;
     readonly roundNumber: number;
     readonly gameStep: string;
