@@ -1,6 +1,7 @@
 import { playerActionsTypes } from "../SelectionStage/utils";
 import { comparisonDelaySecond } from "./utils";
 import { IComparisonItems } from "../../../redux/game-reducer/types";
+import { gameSteps } from "../../../redux/game-reducer/constants";
 
 interface IComparator {
 	readonly playerOneLives: number;
@@ -15,6 +16,10 @@ interface IComparator {
 	readonly comparisonIndex: number;
 	readonly setComparisonItems: (value: IComparisonItems) => void;
 	readonly setComparisonIndex: (value: number) => void;
+	readonly setGameStep:(value:string) => void;
+	readonly resetItemsOfPlayers:() => void;
+	readonly roundNumberChanged:(value:number) => void;
+	readonly setComparisonStart:(valuer:boolean) => void;
 }
 
 export const comparator = (props: IComparator) => {
@@ -30,14 +35,36 @@ export const comparator = (props: IComparator) => {
 		comparisonItems,
 		comparisonIndex,
 		setComparisonItems,
-		setComparisonIndex
+		setComparisonIndex,
+		setGameStep,
+		resetItemsOfPlayers,
+		roundNumberChanged,
+		setComparisonStart
 	} = props;
 
 	const maxLength = Math.max(comparisonItems.playerOneItems.length, comparisonItems.playerTwoItems.length);
 
+	const resetState = {
+		playerTwoItems: [],
+		playerOneItems: []
+	};
+
+	const resetComparisonState = () => {
+		setComparisonItems(resetState);
+		setComparisonIndex(0);
+		setComparisonStart(false);
+	};
+
+	const restart = () => {
+		resetComparisonState();
+		resetItemsOfPlayers();
+		roundNumberChanged(1);
+		setGameStep(gameSteps.SELECTION_STAGE);
+	};
+
 	setTimeout(() => {
 		// To use daley put next code before timeout
-		const newState = comparisonItems
+		const newState = comparisonItems;
 
 		if (newState.playerOneItems[comparisonIndex]) {
 			newState.playerOneItems[comparisonIndex].visible = false;
@@ -78,7 +105,13 @@ export const comparator = (props: IComparator) => {
 		}
 
 		if (comparisonIndex < maxLength - 1) {
-			setComparisonIndex(comparisonIndex + 1)
+			setComparisonIndex(comparisonIndex + 1);
+		}
+
+		if (comparisonIndex === maxLength - 1) {
+			setTimeout(() => {
+				restart();
+			}, comparisonDelaySecond);
 		}
 	}, comparisonDelaySecond);
-}
+};

@@ -42,6 +42,7 @@ export const nextSelectionStep = (props: INextSelectionStep) => {
 
 	if (firstPlayerItemLength === rules.ITEM_COUNT && secondPlayerItemLength === rules.ITEM_COUNT) {
 		setGameStep(gameSteps.COMPARISON_STAGE);
+		setRoundChange(false);
 	} else {
 		if (needToChangeRound) {
 			if (roundNumber === 3) {
@@ -51,6 +52,7 @@ export const nextSelectionStep = (props: INextSelectionStep) => {
 					setSelectedItemSecondPlayer([...selectionItems])
 				}
 				setGameStep(gameSteps.COMPARISON_STAGE);
+				setRoundChange(false);
 			} else {
 				if (playersItemLength[playerSwitcher(playerOrder) - 1] !== rules.ITEM_COUNT) {
 					changeRound();

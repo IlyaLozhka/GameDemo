@@ -6,7 +6,7 @@ import { comparisonBuilder } from "./comparisonBuilder";
 import { PlayerItem } from "../../common/PlayerItem/PlayerItem";
 import { comparator } from "./comporisonRules";
 
-export const ComparisonStage:React.FunctionComponent<IProps> = (props) => {
+export const ComparisonStage: React.FunctionComponent<IProps> = (props) => {
 	const {
 		playerOneItems,
 		playerTwoItems,
@@ -14,7 +14,7 @@ export const ComparisonStage:React.FunctionComponent<IProps> = (props) => {
 		comparisonItems,
 		setComparisonItems,
 		comparisonStart,
-		setComparisonStart,
+		setComparisonStart
 	} = props;
 
 	useEffect(() => {
@@ -26,7 +26,7 @@ export const ComparisonStage:React.FunctionComponent<IProps> = (props) => {
 		if (comparisonStart) {
 			comparator({...props});
 		}
-	},[comparisonIndex, comparisonStart]);
+	}, [comparisonIndex, comparisonStart]);
 
 	return <div className={styles.container}>
 		<div>

@@ -99,6 +99,19 @@ const playersReducer = (state = initialState, action: IAction) => {
                 }
             }
         }
+        case  types.RESET_ITEMS : {
+            return {
+                ...state,
+                playerOne: {
+                    ...state.playerOne,
+                    itemArray: state.playerOne.itemArray.splice(0, state.playerOne.itemArray)
+                },
+                playerTwo: {
+                    ...state.playerTwo,
+                    itemArray: state.playerTwo.itemArray.splice(0, state.playerTwo.itemArray)
+                }
+            }
+        }
         default:
             return state;
     }
