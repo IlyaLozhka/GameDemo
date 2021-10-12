@@ -3,16 +3,20 @@ import { ComparisonStage } from "./ComparisonStage";
 import { IItemType, IStore } from "../../../redux/types";
 import { Dispatch } from "redux";
 import {
+	resetItemsOfPlayers,
 	setEtherFirstPlayer, setEtherSecondPlayer,
 	setLivesFirstPlayer,
 	setLivesSecondPlayer
 } from "../../../redux/players-reducer/actionCreators";
 import {
+	resetComparisonStage,
 	setComparisonIndex,
 	setComparisonItems,
-	setComparisonStart
+	setComparisonStart,
+	setGameStep
 } from "../../../redux/game-reducer/actionsCreators";
 import { IComparisonItems } from "../../../redux/game-reducer/types";
+import { gameSteps } from "../../../redux/game-reducer/constants";
 
 interface IMapState {
 	readonly playerOneItems: ReadonlyArray<IItemType>;
@@ -34,6 +38,9 @@ interface IMapDispatch {
 	readonly setComparisonIndex: (value: number) => void;
 	readonly setComparisonItems: (value: IComparisonItems) => void;
 	readonly setComparisonStart: (value: boolean) => void;
+	readonly setGameSelectStep:() => void;
+	readonly resetPlayersItems: () => void;
+	readonly resetComparisonState: () => void;
 }
 
 function mapStateToProps (state: IStore): IMapState {
@@ -62,6 +69,9 @@ function mapDispatchToProps (dispatch: Dispatch):IMapDispatch {
 		setComparisonIndex: (value) => dispatch(setComparisonIndex(value)),
 		setComparisonItems: (value) => dispatch(setComparisonItems(value)),
 		setComparisonStart: (value) => dispatch(setComparisonStart(value)),
+		setGameSelectStep:() => dispatch(setGameStep(gameSteps.SELECTION_STAGE)),
+		resetPlayersItems: () => dispatch(resetItemsOfPlayers()),
+		resetComparisonState: () => dispatch(resetComparisonStage())
 	}
 }
 

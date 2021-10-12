@@ -15,6 +15,7 @@ interface IComparator {
 	readonly comparisonIndex: number;
 	readonly setComparisonItems: (value: IComparisonItems) => void;
 	readonly setComparisonIndex: (value: number) => void;
+	readonly setGameSelectStep:() => void;
 }
 
 export const comparator = (props: IComparator) => {
@@ -30,14 +31,15 @@ export const comparator = (props: IComparator) => {
 		comparisonItems,
 		comparisonIndex,
 		setComparisonItems,
-		setComparisonIndex
+		setComparisonIndex,
+		setGameSelectStep,
 	} = props;
 
 	const maxLength = Math.max(comparisonItems.playerOneItems.length, comparisonItems.playerTwoItems.length);
 
 	setTimeout(() => {
 		// To use daley put next code before timeout
-		const newState = comparisonItems
+		const newState = comparisonItems;
 
 		if (newState.playerOneItems[comparisonIndex]) {
 			newState.playerOneItems[comparisonIndex].visible = false;
@@ -47,6 +49,7 @@ export const comparator = (props: IComparator) => {
 		}
 		setComparisonItems(newState)
 		//--------
+
 		if (comparisonItems.playerTwoItems[comparisonIndex]?.value === playerActionsTypes.ATTACK
 			&& comparisonItems.playerOneItems[comparisonIndex].value !== playerActionsTypes.PROTECT) {
 
@@ -78,7 +81,13 @@ export const comparator = (props: IComparator) => {
 		}
 
 		if (comparisonIndex < maxLength - 1) {
-			setComparisonIndex(comparisonIndex + 1)
+			setComparisonIndex(comparisonIndex + 1);
+		}
+
+		if (comparisonIndex === maxLength - 1) {
+			setTimeout(() => {
+				setGameSelectStep();
+			}, comparisonDelaySecond);
 		}
 	}, comparisonDelaySecond);
-}
+};

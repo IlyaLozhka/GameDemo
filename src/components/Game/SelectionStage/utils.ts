@@ -24,3 +24,6 @@ export const rules = {
 	'ITEM_VARIANTS': 3
 }
 
+export function playerSwitcher (player: number) {
+	return player === players.FIRST_PLAYER ? players.SECOND_PLAYER : players.FIRST_PLAYER
+}

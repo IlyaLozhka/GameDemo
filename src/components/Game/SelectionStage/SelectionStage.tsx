@@ -24,6 +24,9 @@ export const SelectionStage: React.FunctionComponent<IProps> = (props) => {
         secondPlayerItemLength,
         setGameStep,
         needToChangeRound,
+        initialOrder,
+        setInitialOrder,
+        resetSelectionStage
     } = props
 
     const startRandom = useCallback(() => {
@@ -72,6 +75,13 @@ export const SelectionStage: React.FunctionComponent<IProps> = (props) => {
     const onNextStepClick = () => {
         nextSelectionStep({ ...props, changeRound, changeOrder });
     };
+
+    useEffect(() => () => {
+        const firstPlayerInNextRound = playerSwitcher(initialOrder);
+        setInitialOrder(firstPlayerInNextRound);
+        setPlayerOrder(firstPlayerInNextRound);
+        resetSelectionStage()
+    },[]);
 
     return <div className={styles.container}>
         <h3>Round {roundNumber} Player {playerOrder}</h3>
