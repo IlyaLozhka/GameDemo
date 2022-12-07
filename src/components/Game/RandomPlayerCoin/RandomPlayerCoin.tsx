@@ -1,24 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { randomNumber } from "./utils";
 
 import styles from './RandomPlayerCoin.module.scss';
+import { IProps } from "./index";
 
-interface IRandomPlayerCoin {
-	readonly chooseFirstPlayer: (value: number) => void;
-}
-
-export const RandomPlayerCoin: React.FunctionComponent<IRandomPlayerCoin> = ({chooseFirstPlayer}) => {
-	const [answer, setAnswer] = useState<number | null>();
-
+export const RandomPlayerCoin: React.FunctionComponent<IProps> = ({chooseFirstPlayer, playerOrder, setSelectionType}) => {
 	useEffect(() => {
 		const answer = randomNumber(2) + 1;
-		setAnswer(answer);
+		chooseFirstPlayer(answer);
+	},[chooseFirstPlayer]);
 
-		setTimeout(() => {chooseFirstPlayer(answer)}, 3500);
-	},[])
+	useEffect(() => {
+		setTimeout (() => {
+			setSelectionType();
+		}, 3500);
+	}, [playerOrder]);
 
 	return <>
-		{answer && <div className={`${styles.container} ${answer === 1 ? styles.spinFirst : styles.spinSecond}`}>
+		{playerOrder && <div className={`${styles.container} ${playerOrder === 1 ? styles.spinFirst : styles.spinSecond}`}>
 			<div className={styles.first}><span>1</span></div>
 			<div className={styles.second}><span>2</span></div>
 		</div>}

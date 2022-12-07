@@ -6,35 +6,9 @@
     display: flex;
     flex-direction: row;
     margin: 20px 0;
+
+    >div {
+      margin-right: 20px;
+    }
   }
-}
-
-@mixin Item {
-  width: 120px;
-  height: 120px;
-  margin-right: 20px;
-}
-
-@keyframes disappearAnimation {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-.item {
-  @include Item;
-  background: deepskyblue;
-  font-size: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  animation: disappearAnimation .6s forwards ease-out;
-}
-
-.noopItem {
-  @include Item;
 }

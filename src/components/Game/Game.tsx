@@ -1,33 +1,37 @@
 import React from "react";
-import { GameFiledContainer } from "../../component/gameFiledContainer";
+import { GameFiledContainer } from "./PlayersArea";
 import { IProps } from "./index";
-import { RandomPlayerCoin } from "./RandomPlayerCoin/RandomPlayerCoin";
 import { gameSteps } from "../../redux/game-reducer/constants";
 import { SelectionStageContainer } from "./SelectionStage";
 import { ComparisonStageContainer } from "./ComparisonStage";
-
 import styles from './Game.module.scss';
+import { RandomPlayerCoinContainer } from "./RandomPlayerCoin";
+import { ModalWinContainer } from "../Modal/ModalPlayersWins/ModalWinContainer";
 
-export const Game: React.FunctionComponent<IProps> = ({ gameStep, playerOrder, setPlayerOrder, setGameType }) => {
+export const Game: React.FunctionComponent<IProps> = (props) => {
 
-	const onSetFirstPlayer = (order: number) => {
-		setPlayerOrder(order);
-		setGameType(gameSteps.SELECTION_STAGE);
-	}
+	const {
+		gameStep,
+		livesPlayerTwo,
+		livesPlayerOne
+	} = props;
 
 	const gameStepSwitcher = (step: string) => {
 		switch (step) {
-			case gameSteps.CHOOSE_FIRST_PLAYER: return <RandomPlayerCoin chooseFirstPlayer={onSetFirstPlayer}/>
+			case gameSteps.CHOOSE_FIRST_PLAYER: return <RandomPlayerCoinContainer/>
 			case gameSteps.SELECTION_STAGE: return <SelectionStageContainer/>
 			case gameSteps.COMPARISON_STAGE: return <ComparisonStageContainer/>
 			default: return null;
 		}
-	}
+	};
 
 	return <>
+		{
+			(livesPlayerTwo === 0 || livesPlayerOne === 0) && <ModalWinContainer/>
+		}
 		<GameFiledContainer/>
 		<div className={styles.stageWrapper}>
 			{gameStepSwitcher(gameStep)}
 		</div>
 	</>
-}
+};
